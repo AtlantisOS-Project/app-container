@@ -1,0 +1,15 @@
+[Unit]
+Description=App-Container Overlay Mount
+After=local-fs.target
+Before=atl-runtime.service
+PartOf=atl-runtime.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/app-container-mount.sh
+ExecStop=/usr/bin/app-container-umount.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

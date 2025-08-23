@@ -1,0 +1,14 @@
+[Unit]
+Description=AtlantisOS App-Container Runtime
+After=app-container-mount.service
+Requires=app-container-mount.service
+
+[Service]
+ExecStart=/usr/bin/atl-app-runtime.sh
+ExecStop=/usr/bin/machinectl poweroff atl-app
+KillMode=mixed
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
